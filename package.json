@@ -1,0 +1,15 @@
+{
+  "name": "what-does-discord-translate-for-this",
+  "module": "index.ts",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "fuse.js": "^7.1.0"
+  }
+}
