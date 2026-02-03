@@ -1,4 +1,5 @@
-import keys from "./assets/keys.json"; // search in en
+import keys from "./assets/keys.json";
+import en from "./assets/en.json"; //search in en
 import Fuse from "fuse.js";
 import { readFileSync } from "fs";
 
@@ -14,7 +15,7 @@ const targetLang = JSON.parse(
   readFileSync(`./assets/${langCode}.json`, "utf-8"),
 );
 
-const entries = Object.entries(keys).map(([k, v]) => ({ key: k, value: v }));
+const entries = Object.entries(en).map(([k, v]) => ({ key: k, value: v }));
 const fuse = new Fuse(entries, { keys: ["value"], threshold: 0.1 });
 const results = fuse.search(searchTerm);
 
@@ -27,7 +28,9 @@ results.reverse().forEach((result) => {
   if (!seen.has(signature)) {
     seen.add(signature);
     console.log(
-      `\x1b[33m${keys[k]}\x1b[0m\n` + `\x1b[32m${targetLang[k]}\x1b[0m \n`,
+      `\x1b[33m${en[k]}\x1b[0m\n` +
+        `\x1b[32m${targetLang[k]}\x1b[0m\n` +
+        `${keys[k]}\n`,
     );
   }
 });
